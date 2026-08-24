@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>CodeCraftHub — Course Tracker</title>
+    <title>CodeCraftHub: Your Learning Management Platform</title>
     <style>
       :root {
         --bg: #0f172a;
@@ -153,9 +153,9 @@
         transform: translateY(1px);
       }
 
-      .btn-primary {
-        background: var(--primary);
-        color: #fff;
+	.btn-primary {
+  background: #8B5CF6;
+  color: #fff;
       }
 
       .btn-primary:hover {
@@ -166,6 +166,13 @@
         opacity: 0.6;
         cursor: not-allowed;
       }
+	.btn-success {
+ 	 background: #F59E0B;
+  	color: #fff;
+}	
+	.btn-success:hover {
+ 	 background: #d97706;
+}
 
       .btn-ghost {
         background: #fff;
@@ -584,9 +591,9 @@
               '<button class="btn btn-ghost" data-edit="' +
               c.id +
               '">Edit</button>' +
-              '<button class="btn btn-danger" data-delete="' +
-              c.id +
-              '">Delete</button>' +
+              '<button class="btn-danger" onclick="handleDelete(\'' +
+		c.id +
+		'\')">Remove</button>' +
               "</div></td>" +
               "</tr>"
             );
@@ -720,7 +727,9 @@
           saveBtn.textContent = "Save changes";
         }
       });
-
+	function handleDelete(id) {
+ 	 deleteCourse(id);
+}
       async function deleteCourse(id) {
         const course = currentCourses.find(function (c) {
           return c.id === id;
