@@ -4,11 +4,13 @@ A simple Flask application to track and manage learning courses
 """
 
 from flask import Flask, request, jsonify
+from flask_cors import CORS
 import json
 import os
 from datetime import datetime
 
 app = Flask(__name__)
+CORS(app)
 
 DATA_FILE = 'courses.json'
 VALID_STATUSES = ['Not Started', 'In Progress', 'Completed']
